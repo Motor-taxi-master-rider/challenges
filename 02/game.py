@@ -18,17 +18,26 @@ def draw_letters():
 def input_word(draw):
     """Ask player for a word and validate against draw.
     Use _validation(word, draw) helper."""
-    word = input('From a valid word: ').upper()
-    if not _validation(word, draw):
-        raise ValueError(f'Invalid input：{word}')
-    return word
+    while True:
+        word = input('From a valid word: ').upper()
+        if not _validation(word, draw):
+            print(f'Invalid input：{word}')
+            continue
+        return word
 
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
 
     def is_use_letter_of_draw():
-        return word in _get_permutations_draw(draw)
+        unused_letters = list(draw)
+        for char in word.upper():
+            if char in unused_letters:
+                unused_letters.remove(char)
+            else:
+                return False
+        else:
+            return True
 
     def is_valid_dictionary_word():
         return word in DICTIONARY
@@ -52,17 +61,11 @@ def get_possible_dict_words(draw):
     return set(DICTIONARY) & set(map("".join, _get_permutations_draw(draw)))
 
 
-d = range(1, 8)
-
-
 def _get_permutations_draw(draw):
     """Helper for get_possible_dict_words to get all permutations of draw letters.
     Hint: use itertools.permutations"""
-    return itertools.chain.from_iterable(
-        set(itertools.permutations(draw, length)) for length in range(1, len(draw) + 1))
-
-
-_get_permutations_draw(d)
+    for length in range(1, len(draw) + 1):
+        yield from set(itertools.permutations(draw, length))
 
 
 # From challenge 01:
