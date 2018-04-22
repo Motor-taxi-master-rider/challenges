@@ -4,7 +4,7 @@ Letter = namedtuple('Letter', 'name amount value')
 
 def _load_words():
     with open('dictionary.txt') as f:
-        return set([word.strip().lower() for word in f.read().split()])
+        return set([word.strip().upper() for word in f.read().split()])
 
 DICTIONARY = _load_words()
 assert len(DICTIONARY) == 234371

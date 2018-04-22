@@ -3,7 +3,7 @@
 # http://pybit.es/codechallenge02.html
 
 import itertools
-import random
+import numpy as np
 
 from data import DICTIONARY, LETTER_SCORES, POUCH
 
@@ -12,19 +12,28 @@ NUM_LETTERS = 7
 
 def draw_letters():
     """Pick NUM_LETTERS letters randomly. Hint: use stdlib random"""
-    pass
+    return np.random.choice(POUCH, NUM_LETTERS)
 
 
 def input_word(draw):
     """Ask player for a word and validate against draw.
     Use _validation(word, draw) helper."""
-    pass 
-
+    word = input('From a valid word: ').upper()
+    if not _validation(word, draw):
+        raise ValueError(f'Invalid input：{word}')
+    return word
 
 
 def _validation(word, draw):
     """Validations: 1) only use letters of draw, 2) valid dictionary word"""
-    pass
+
+    def is_use_letter_of_draw():
+        return word in _get_permutations_draw(draw)
+
+    def is_valid_dictionary_word():
+        return word in DICTIONARY
+
+    return is_use_letter_of_draw() and is_valid_dictionary_word()
 
 
 # From challenge 01:
@@ -40,13 +49,20 @@ def calc_word_value(word):
 def get_possible_dict_words(draw):
     """Get all possible words from draw which are valid dictionary words.
     Use the _get_permutations_draw helper and DICTIONARY constant"""
-    pass
+    return set(DICTIONARY) & set(map("".join, _get_permutations_draw(draw)))
+
+
+d = range(1, 8)
 
 
 def _get_permutations_draw(draw):
     """Helper for get_possible_dict_words to get all permutations of draw letters.
     Hint: use itertools.permutations"""
-    pass
+    return itertools.chain.from_iterable(
+        set(itertools.permutations(draw, length)) for length in range(1, len(draw) + 1))
+
+
+_get_permutations_draw(d)
 
 
 # From challenge 01:
