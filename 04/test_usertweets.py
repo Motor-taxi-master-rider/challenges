@@ -14,7 +14,7 @@ Tweet = namedtuple('Tweet', ['id_str', 'created_at', 'text'])
 
 
 def read_csv(fname):
-    with open(fname) as f:
+    with open(fname, encoding='utf-8') as f:
         has_header = csv.Sniffer().has_header(f.readline())
         f.seek(0)
         r = csv.reader(f)
