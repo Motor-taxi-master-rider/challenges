@@ -61,10 +61,12 @@ class UserTweets(object):
 
 
 if __name__ == "__main__":
+    twitter_users = ('pybites', 'izzy_spideypool', 'bbelderbos')
     with ThreadPoolExecutor(max_workers=3) as executor:
-        wait_for = [executor.submit(UserTweets, handle) for handle in ('pybites', 'izzy_spideypool', 'bbelderbos')]
+        wait_for = [executor.submit(UserTweets, handle) for handle in twitter_users]
         for future in as_completed(wait_for):
             user = future.result()
+            print('--- {} ---'.format(user._handle))
             for tw in user[:5]:
                 print(tw)
             print()
