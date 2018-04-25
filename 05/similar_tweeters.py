@@ -1,5 +1,6 @@
 import sys
 
+
 def similar_tweeters(user1, user2):
     pass
 

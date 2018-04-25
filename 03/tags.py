@@ -1,6 +1,6 @@
-import xml.etree.ElementTree
-import re
 import difflib
+import re
+import xml.etree.ElementTree
 from collections import Counter
 
 TOP_NUMBER = 10

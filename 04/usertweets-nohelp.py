@@ -1,11 +1,9 @@
-from collections import namedtuple
 import csv
 import os
+from collections import namedtuple
 
 import tweepy
-
-from config import CONSUMER_KEY, CONSUMER_SECRET
-from config import ACCESS_TOKEN, ACCESS_SECRET
+from config import ACCESS_SECRET, ACCESS_TOKEN, CONSUMER_KEY, CONSUMER_SECRET
 
 DEST_DIR = 'data'
 EXT = 'csv'

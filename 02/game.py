@@ -3,6 +3,7 @@
 # http://pybit.es/codechallenge02.html
 
 import itertools
+
 import numpy as np
 
 from data import DICTIONARY, LETTER_SCORES, POUCH

@@ -1,4 +1,4 @@
-from directors import get_movies_by_director, get_average_scores, _calc_mean
+from directors import _calc_mean, get_average_scores, get_movies_by_director
 
 
 def test():

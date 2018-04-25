@@ -1,7 +1,7 @@
+import re
 from collections import Counter
 from difflib import SequenceMatcher
 from itertools import product
-import re
 
 IDENTICAL = 1.0
 TOP_NUMBER = 10

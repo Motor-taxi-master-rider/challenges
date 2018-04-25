@@ -1,6 +1,6 @@
 import time
 
-from flask import render_template, request, Flask
+from flask import Flask, render_template, request
 
 DEFAULT_BANNER = 'https://pbs.twimg.com/media/DZsKAs9W4AAEdpO.jpg:large'
 DEFAULT_GREETING = 'I wish your a Happy Easter'

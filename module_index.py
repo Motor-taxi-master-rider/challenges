@@ -1,7 +1,7 @@
-from collections import defaultdict, Counter
 import glob
 import os
 import re
+from collections import Counter, defaultdict
 
 from stdlib import is_std_lib
 

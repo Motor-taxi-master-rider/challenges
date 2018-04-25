@@ -1,11 +1,11 @@
-from collections import namedtuple
 import csv
+import os
 import unittest
+from collections import namedtuple
 from unittest.mock import patch
 
-
 from tweets import TWEETS  # mock data
-from usertweets import UserTweets, NUM_TWEETS
+from usertweets import NUM_TWEETS, UserTweets
 
 HANDLE = 'pybites'
 MAX_ID = '819831370113351680'
@@ -31,6 +31,7 @@ class TestUserTweets(unittest.TestCase):
             self.user = UserTweets(HANDLE, max_id=MAX_ID)
 
     def tearDown(self):
+        os.remove(self.user.output_file)
         self.user = None
         super().tearDown()
 

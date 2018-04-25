@@ -1,13 +1,11 @@
-from collections import namedtuple
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import csv
 import os
+from collections import namedtuple
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
 
 import tweepy
-
-from config import CONSUMER_KEY, CONSUMER_SECRET
-from config import ACCESS_TOKEN, ACCESS_SECRET
+from config import ACCESS_SECRET, ACCESS_TOKEN, CONSUMER_KEY, CONSUMER_SECRET
 
 DEST_DIR = 'data'
 EXT = 'csv'

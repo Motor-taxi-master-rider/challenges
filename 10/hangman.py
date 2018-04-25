@@ -1,8 +1,8 @@
-from string import ascii_lowercase
 import sys
+from string import ascii_lowercase
 
-from movies import get_movie as get_word  # keep interface generic
 from graphics import hang_graphics
+from movies import get_movie as get_word  # keep interface generic
 
 ASCII = list(ascii_lowercase)
 HANG_GRAPHICS = list(hang_graphics())

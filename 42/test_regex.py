@@ -1,6 +1,6 @@
-from regex import (extract_course_times, split_on_multiple_chars,
+from regex import (extract_course_times, find_double_words,
                    get_all_hashtags_and_links, match_first_paragraph,
-                   find_double_words, match_ip_v4_address)
+                   match_ip_v4_address, split_on_multiple_chars)
 
 
 def test_extract_course_times():

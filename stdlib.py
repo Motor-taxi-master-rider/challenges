@@ -1,5 +1,6 @@
 '''http://stackoverflow.com/questions/22195382/how-to-check-if-a-module-library-package-is-part-of-the-python-standard-library'''
-from __future__ import unicode_literals, print_function
+from __future__ import print_function, unicode_literals
+
 import sys
 from contextlib import contextmanager
 from importlib import import_module

@@ -1,8 +1,7 @@
 import re
 import unittest
 
-from tags import get_tags, get_top_tags
-from tags import get_similarities, TOP_NUMBER
+from tags import TOP_NUMBER, get_similarities, get_tags, get_top_tags
 
 TAG_COUNT = re.compile(r'">([^<]+)</a>\s\((\d+)\)<')
 TAGS = 'tags.html'
