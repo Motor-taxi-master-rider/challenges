@@ -5,6 +5,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 import tweepy
+
 from config import ACCESS_SECRET, ACCESS_TOKEN, CONSUMER_KEY, CONSUMER_SECRET
 
 DEST_DIR = 'data'
@@ -37,7 +38,7 @@ class UserTweets(object):
         auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
         api = tweepy.API(auth)
         for tweet in api.user_timeline(self._handle, count=NUM_TWEETS, max_id=self._max_id):
-            yield Tweet(id_str=tweet.id_str, created_at=tweet.created_at, text=tweet.text)
+            yield Tweet(id_str=tweet.id_str, created_at=tweet.created_at, text=tweet.text.replace('\n', ' '))
 
     def _save_tweets(self):
         """Use the csv module (csv.writer) to write out the tweets.

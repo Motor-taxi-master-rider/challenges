@@ -3,6 +3,7 @@ import os
 from collections import namedtuple
 
 import tweepy
+
 from config import ACCESS_SECRET, ACCESS_TOKEN, CONSUMER_KEY, CONSUMER_SECRET
 
 DEST_DIR = 'data'
