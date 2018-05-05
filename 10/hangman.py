@@ -1,4 +1,3 @@
-import string
 import sys
 import types
 from collections import defaultdict
@@ -8,16 +7,15 @@ from graphics import hang_graphics
 from movies import get_movie as get_word  # keep interface generic
 
 ASCII = list(ascii_lowercase)
-HANG_GRAPHICS = list(hang_graphics())
-ALLOWED_GUESSES = len(HANG_GRAPHICS)
 PLACEHOLDER = '_'
 
 
 class Hangman(object):
     def __init__(self, word: str):
+        word = word.lower()
         self._guessed_character = set()
         self._word: defaultdict = self._construct_word(word)
-        self._guess: list = ['_' if character.upper() in string.ascii_uppercase else character
+        self._guess: list = [PLACEHOLDER if character in ASCII else character
                              for character in word]
         self._hangman = self._hangman_popper()
         next(self._hangman)
@@ -26,7 +24,7 @@ class Hangman(object):
         character_dict = defaultdict(set)
         for index, character in enumerate(word):
             if character.strip():
-                character_dict[character.upper()].add(index)
+                character_dict[character].add(index)
         return character_dict
 
     @types.coroutine
@@ -63,8 +61,8 @@ class Hangman(object):
         return ' '.join(self._guess)
 
     def guess(self, character: str):
-        print(f'You guessed {character.upper()}.')
-        result = self._hangman.send(character.upper())
+        print(f'You guessed {character}.')
+        result = self._hangman.send(character.lower())
         return result
 
 
