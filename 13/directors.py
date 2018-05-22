@@ -41,24 +41,22 @@ def get_average_scores(directors):
 
 def _calc_mean(movies):
     '''Helper method to calculate mean of list of Movie namedtuples'''
-    return sum(float(movie.score) for movie in movies) / len(movies)
+    return sum(float(movie.score) for movie in movies) / max(1, len(movies))
 
 
 def print_results(directors):
     '''Print directors ordered by highest average rating. For each director
     print his/her movies also ordered by highest rated movie.
     See http://pybit.es/codechallenge13.html for example output'''
-    def get_avg(item):
-        return item[1][0]
     fmt_director_entry = '{counter}. {director:<52} {avg:.2f}'
     fmt_movie_entry = '{year}] {title:<50} {score}'
     sep_line = '-' * 60
     for counter, (director, (avg, movies)) in \
-            enumerate(sorted(directors.items(), key=get_avg, reverse=True), start=1):
+            enumerate(sorted(directors.items(), key=lambda x: x[1][0], reverse=True), start=1):
         print(fmt_director_entry.format(
             counter=counter, director=director, avg=avg))
         print(sep_line)
-        for title, year, score in movies:
+        for title, year, score in sorted(movies, key=operator.attrgetter('score'), reverse=True):
             print(fmt_movie_entry.format(year=year, title=title, score=score))
         print()
 
