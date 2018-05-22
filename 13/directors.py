@@ -48,10 +48,13 @@ def print_results(directors):
     '''Print directors ordered by highest average rating. For each director
     print his/her movies also ordered by highest rated movie.
     See http://pybit.es/codechallenge13.html for example output'''
+    def get_avg(item):
+        return item[1][0]
     fmt_director_entry = '{counter}. {director:<52} {avg:.2f}'
     fmt_movie_entry = '{year}] {title:<50} {score}'
     sep_line = '-' * 60
-    for counter, (director, (avg, movies)) in enumerate(directors.items(), start=1):
+    for counter, (director, (avg, movies)) in \
+            enumerate(sorted(directors.items(), key=get_avg, reverse=True), start=1):
         print(fmt_director_entry.format(
             counter=counter, director=director, avg=avg))
         print(sep_line)
