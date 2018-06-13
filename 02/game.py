@@ -8,7 +8,7 @@ import numpy as np
 
 from data import DICTIONARY, LETTER_SCORES, POUCH
 
-NUM_LETTERS = 7
+NUM_LETTERS = 10
 
 
 def draw_letters():
@@ -22,7 +22,7 @@ def input_word(draw):
     while True:
         word = input('From a valid word: ').upper()
         if not _validation(word, draw):
-            print(f'Invalid input：{word}')
+            print(f'Invalid input: {word}')
             continue
         return word
 
